@@ -1,0 +1,12 @@
+{
+  "name": "Newsie",
+  "displayName": "Newsie",
+  "expo": {
+    "name": "Newsie",
+    "slug": "Newsie",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
