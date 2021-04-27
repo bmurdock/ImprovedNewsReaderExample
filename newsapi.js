@@ -69,7 +69,7 @@ export const cacheArticles = async (apikey, sources) =>
             }
             else {
                 console.log('selected sources: ', sources);
-                if (sources.length) {
+                if (sources && sources.length) {
                     return articleCache.filter((article) => {
                         return sources.indexOf(article.source.id) !== -1;
                     })
@@ -78,6 +78,6 @@ export const cacheArticles = async (apikey, sources) =>
             }
         })
         .catch((err) => {
-            console.log('Could not get cached articles.');
+            console.log('Could not get cached articles: ', err);
         });
 }

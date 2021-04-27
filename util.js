@@ -13,7 +13,7 @@ export const getString = async (k) => {
     console.log('attempting to get: ', k);
     try {
         const value = await AsyncStorage.getItem(k);
-        console.log(`Got value for ${k}: ${value}`);
+        //console.log(`Got value for ${k}: ${value}`);
         return value;
     } catch(e) {
         // error reading value
@@ -24,7 +24,7 @@ export const getJSON = async (k) =>
 {
     try {
         const data = await getString(k);
-        console.log('typeof: ', typeof data);
+        //console.log('typeof: ', typeof data);
         if (typeof data === 'string' && data !== '' && data !== 'undefined')
         {
             const value = JSON.parse(data);
