@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, Button, TextInput, TouchableHighlight } from 'r
 import { storeString, getString, fetchJSON, getJSON } from './util';
 import Welcome from './components/Welcome';
 import ApiKey from './components/ApiKey';
-import { cacheSources } from './newsapi';
+import { cacheSources, cacheArticles} from './newsapi';
 import Sources from './components/SourcePicker';
 import AppContext from './context';
 import { styles } from './styles';
@@ -54,11 +54,20 @@ export default class App extends React.Component {
   
   setSources = (val) =>
   {
+    // val should be an array of sources that we are setting
     this.setState({
       selectedSources: val,
-    }, () =>
+    }, async () =>
     {
       console.log('sources set: ', this.state);
+      cacheArticles(this.state.apikey, val)
+      .then((data) =>
+      {
+        this.setHeadlines(data.map((article, i) =>
+        {
+          return <Headline key={`headline_${i}`} {...article} />
+        }))
+      })
     });
   }
   

@@ -30,6 +30,7 @@ export default class App extends React.Component {
           .then(() => {
               this.context.setApiKey(this.state.apikey);
           });
+          this.context.setView(<NewsPage />);
   }
   componentDidMount()
   {

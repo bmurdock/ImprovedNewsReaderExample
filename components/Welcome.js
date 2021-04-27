@@ -10,28 +10,18 @@ export default class App extends React.Component {
   constructor()
   {
     super();
-    this.state = {
-      inputName: '',
-    }
   }
     // use the context we created
-    static contextType = AppContext;
+  static contextType = AppContext;
   handleName = ({nativeEvent}) =>
   {
-    const { text } = nativeEvent;
-    console.log('text: ', text);
-    this.setState({
-      inputName: text,
-    })
+    const {text} = nativeEvent;
+    this.context.setName(text);
   }
   handleNext = ({nativeEvent}) =>
   {
-    console.log('nativeEvent: ', nativeEvent);
-    storeString('name', this.state.inputName)
-      .then(() =>
-      {
-        console.log('saved');
-    })
+    storeString('name', this.context.name);
+    this.context.setView(<ApiKey />)
   }
   componentDidMount()
   {
@@ -42,14 +32,13 @@ export default class App extends React.Component {
             this.context.setName(data);
             this.context.setView(<ApiKey />);
         }
-        
     })
   }
   render()
   {
       return (
         <View style={styles.container}>
-            <Text style={styles.formTitle}>Welcome {this.state.inputName}</Text>
+            <Text style={styles.formTitle}>Welcome {this.context.name}</Text>
             <Text>What should we call you?</Text>
             <TextInput placeholder="Name" style={styles.inputStyle} onChange={this.handleName} />
             <TouchableHighlight onPress={this.handleNext}>

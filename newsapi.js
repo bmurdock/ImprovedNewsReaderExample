@@ -41,12 +41,12 @@ export const cacheSources = async (apikey) =>
 export const cacheArticles = async (apikey, sources) =>
 {
     let articlesRoute = `${baseRoute}/top-headlines?apiKey=${apikey}&language=en&country=us`;
-    getJSON('articles')
+    return getJSON('articles')
         .then((articleCache) => {
             console.log('articleCache: ', articleCache);
             if (articleCache === null) {
                 console.log('fetching: ', articlesRoute);
-                fetchJSON(articlesRoute)
+                return fetchJSON(articlesRoute)
                     .then((fetchedData) => {
                         console.log('fetched articles: ', fetchedData);
                         try {
@@ -68,7 +68,8 @@ export const cacheArticles = async (apikey, sources) =>
                     });
             }
             else {
-                if (sources) {
+                console.log('selected sources: ', sources);
+                if (sources.length) {
                     return articleCache.filter((article) => {
                         return sources.indexOf(article.source.id) !== -1;
                     })
