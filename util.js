@@ -41,7 +41,16 @@ export const getJSON = async (k) =>
 // we expect a json response so let's shorten the fetch code a bit
 export const fetchJSON = async (route) => {
     try {
-        return await fetch(route).then(response => response.json());
+        return await fetch(route).then((response) =>
+        {
+            if (response.status === 200)
+            {
+                return response.json();
+            }
+            else {
+                console.log(`Did not get good response: `, response);
+            }
+        });
     }
     catch (err)
     {

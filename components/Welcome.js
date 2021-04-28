@@ -38,7 +38,6 @@ export default class App extends React.Component {
   {
       return (
         <View style={styles.container}>
-            <Text style={styles.formTitle}>Welcome {this.context.name}</Text>
             <Text>What should we call you?</Text>
             <TextInput placeholder="Name" style={styles.inputStyle} onChange={this.handleName} />
             <TouchableHighlight onPress={this.handleNext}>

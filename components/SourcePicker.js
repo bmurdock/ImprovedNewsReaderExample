@@ -1,5 +1,6 @@
 import React from 'react';
-import {Text, View, Picker } from 'react-native';
+import { Text, View } from 'react-native';
+import { Picker } from '@react-native-picker/picker';
 import { styles } from '../styles';
 import AppContext from '../context';
 import { cacheSources, cacheArticles } from '../newsapi';
@@ -68,15 +69,15 @@ export default class SourcePicker extends React.Component {
     render()
     {
         return (
-            <View>
+            <View style={{ borderWidth: 1 }}>
 
-            <Picker
-                selectedValue={this.state.selectedValue}
-                onValueChange={this.handleSelection}
-            >
-                <Picker.Item label='Filter articles...' />
-                {this.state.sourceItems}
-            </Picker>
+                <Picker
+                    selectedValue={this.state.selectedValue}
+                    onValueChange={this.handleSelection}
+                >
+                    <Picker.Item label='Filter articles...' />
+                    {this.state.sourceItems}
+                </Picker>
 
             </View>
         );

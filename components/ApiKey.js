@@ -46,7 +46,6 @@ export default class App extends React.Component {
   {
     return (
       <View style={styles.container}>
-        <Text style={styles.formTitle}>Welcome {this.state.inputName}</Text>
 
         <Text>Enter your API Key for NewsAPI.org</Text>
         <TextInput placeholder="APIKey" style={styles.inputStyle} onChange={this.handleInput} />

@@ -9,6 +9,10 @@ import Sources from './components/SourcePicker';
 import AppContext from './context';
 import { styles } from './styles';
 import Headline from './components/Headline';
+import TitleBar from './components/TitleBar';
+
+
+
 
 export default class App extends React.Component {
   constructor()
@@ -88,10 +92,14 @@ export default class App extends React.Component {
     const { setView, setApiKey, setName, setSources, setHeadlines} = this;
 
     return (
-      <AppContext.Provider value={{ ...this.state, setView, setApiKey, setName, setSources, setHeadlines}}>
+      <AppContext.Provider value={{ ...this.state, setView, setApiKey, setName, setSources, setHeadlines }}>
+        <TitleBar />
+
         <View style={styles.container}>
           {this.state.activeView}
         </View>
+
+
       </AppContext.Provider>
     );
   }

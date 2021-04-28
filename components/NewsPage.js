@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View, Picker } from 'react-native';
+import {View, ScrollView } from 'react-native';
 import { styles } from '../styles';
 import AppContext from '../context';
 import SourcePicker from './SourcePicker';
@@ -17,20 +17,24 @@ export default class NewsPage extends React.Component {
         cacheSources(this.context.apikey)
             .then(() => {
                 return cacheArticles(this.context.apikey, null);
+            })
+            .then((articles) => {
+                this.context.setHeadlines(articles.slice(0, 10).map((art, i) =>
+                {
+                    return <Headline key={`article_${i}`} {...art} />
+                }))
             });
     }
     render()
     {
-        console.log('context: ', this.context);
         return (
             <View style={styles.container}>
-                <Text style={styles.formTitle}>Welcome {this.context.name}</Text>
                 <View>
                     <SourcePicker />
                 </View>
-                <View>
+                <ScrollView>
                     {this.context.headlines}
-                </View>
+                </ScrollView>
 
             </View>
         )

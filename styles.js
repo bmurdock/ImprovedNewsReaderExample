@@ -3,10 +3,11 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#fff',
+        backgroundColor: '#fff',
+        flexDirection: 'column',
+      
       alignItems: 'center',
-        justifyContent: 'center',
-        borderWidth: 4,
+        justifyContent: 'flex-start',
         borderColor: '#000',
     },
     inputStyle: {
@@ -18,13 +19,12 @@ export const styles = StyleSheet.create({
       backgroundColor: '#ccc',
     },
     formTitle: {
-      fontSize: 20,
-      color: '#fff',
-      backgroundColor: '#000',
-      marginVertical: 20,
-      width: 400,
+        fontSize: 24,
+        fontWeight: '900',
       padding: 10,
-      textAlign: 'center',
+        textAlign: 'center',
+        marginHorizontal: 'auto',
+      width: '100%',
     },
     button: {
       borderWidth: StyleSheet.hairlineWidth,
@@ -34,5 +34,24 @@ export const styles = StyleSheet.create({
       margin: 5,
       borderColor: 'black',
       backgroundColor: '#ccc',
+    },
+    headlineContainer: {
+        flex: 1,
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginTop: 5,
+        maxWidth: '90%',
+        marginHorizontal: 'auto',
+    },
+    titleBar: {
+        borderColor: 'red',
+        alignItems: 'flex-end',
+        justifyContent: 'flex-end',
+        flexDirection: 'row',
+        marginVertical: 40,
+    },
+    settingsBtn: {
+        maxWidth: 40,
+        marginRight: 10,
     }
   });
